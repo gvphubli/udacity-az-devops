@@ -14,7 +14,7 @@ The program is divided into three main sections, each focusing on specific aspec
 - Azure Security Best Practices
 - Infrastructure as Code (IaC)
 
-&rarr; [Project: Deploying a Web Server in Azure](https://github.com/<gvphubli>/tree/main/project1_Deploying-a-webserver)
+&rarr; [Project: Deploying a Web Server in Azure](https://github.com/gvphubli/udemy-az-devops/tree/main/)
 
 
 ## Key Skills
