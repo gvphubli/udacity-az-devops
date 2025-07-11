@@ -59,7 +59,7 @@ variable "password" {
 
 variable "username" {
     description = "The Azure admin username"
-    default     = "adminuser" 
+    default     = "Administrator" 
     sensitive   = true
 }
 
