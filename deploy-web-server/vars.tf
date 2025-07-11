@@ -1,5 +1,5 @@
 variable "prefix" {
-  description = "The prefix which should be used for all resources in this example"
+  description = "The prefix which should be used for all resources in this project"
   default = "azdevops"
 }
 
@@ -9,8 +9,8 @@ variable "resourcegroup" {
 }
 
 variable "location" {
-  description = "The Azure Region in which all resources in this example should be created."
-  default = "West Europe" 
+  description = "The Azure Region in which all resources in this project should be created."
+  default = "westus2" 
 }
 
 variable "tenant_id" {
@@ -47,7 +47,7 @@ variable "deployment_name" {
 
 variable "password" {
     description = "The Azure resource password"
-    default = "P@ssw0rd1234!" 
+    default = "P@ssw0rd0987!" 
     sensitive = true
 }
 
