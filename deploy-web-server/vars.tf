@@ -10,7 +10,7 @@ variable "resourcegroup" {
 
 variable "location" {
   description = "The Azure Region in which all resources in this project should be created."
-  default = "westus2" 
+  default = "westeurope" 
 }
 
 variable "tenant_id" {
@@ -54,7 +54,7 @@ variable "password" {
 
 variable "username" {
     description = "The Azure admin username"
-    default     = "Administrator" 
+    default     = "DevOpsAdmin" 
     sensitive   = true
 }
 
