@@ -1,35 +1,40 @@
 {
-	"variables": {
-		"client_id": "{{env `ARM_CLIENT_ID`}}",
-		"client_secret": "{{env `ARM_CLIENT_SECRET`}}",
-		"subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}"
-	},
-	"builders": [{
-		"type": "azure-arm",
-
-    	"client_id": "752c4152-7514-463b-bdba-7b977e3f8fbe",
-    	"client_secret": "SdD8Q~QOdQU3np190XSMAZljfyq0~wxICoSDwcZY",
-    	"subscription_id": "df56a173-611b-429d-901a-af369d7d59b5",
-
-    	"os_type": "Linux",
-    	"image_publisher": "Canonical",
-    	"image_offer": "UbuntuServer",
-    	"image_sku": "18.04-LTS",
-        "azure_tags": {
-            "project": "udacity-webserver"
-            },
-    	"managed_image_resource_group_name": "Azuredevops",
-    	"managed_image_name": "PackerImage",
-
-    	"location": "West Europe",
-    	"vm_size": "Standard_DS2_v2"
-	}],
-	"provisioners": [{
-		"inline": [
-			"echo 'Hello, World!' > index.html",
-			"nohup busybox httpd -f -p 80 &"
-		],
-		"inline_shebang": "/bin/sh -x",
-		"type": "shell"
-	}]
+  "variables": {
+    "client_id": "{{env `ARM_CLIENT_ID`}}",
+    "client_secret": "{{env `ARM_CLIENT_SECRET`}}",
+    "tenant_id": "{{env `ARM_TENANT_ID`}}",
+    "subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}"
+  },
+  "builders": [
+    {
+      "type": "azure-arm",
+      "client_id": "{{user `client_id`}}",
+      "client_secret": "{{user `client_secret`}}",
+      "tenant_id": "{{user `tenant_id`}}",
+      "subscription_id": "{{user `subscription_id`}}",
+      "os_type": "Linux",
+      "image_publisher": "Canonical",
+      "image_offer": "UbuntuServer",
+      "image_sku": "18.04-LTS",
+      "managed_image_resource_group_name": "Azuredevops",
+      "managed_image_name": "PackerImage",
+      "location": "West Europe",
+      "vm_size": "Standard_D2s_v3",
+      "azure_tags": {
+        "project": "udacity-webserver",
+        "environment": "dev",
+        "owner": "udacity"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline_shebang": "/bin/sh -x",
+      "inline": [
+        "echo 'Hello, World!' > index.html",
+        "nohup busybox httpd -f -p 80 &"
+      ]
+    }
+  ]
 }
