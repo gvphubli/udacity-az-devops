@@ -18,6 +18,10 @@ variable "tenant_id" {
     default = "f958e84a-92b8-439f-a62d-4f45996b6d07"
 }
 
+/**
+
+// use these lines if you are deploying application or doing automation using API etc
+
 variable "client_id" {  
     description = "Client ID"
     default = "752c4152-7514-463b-bdba-7b977e3f8fbe"
@@ -27,6 +31,8 @@ variable "client_secret" {
     description = "Client secret id"
     default = "SdD8Q~QOdQU3np190XSMAZljfyq0~wxICoSDwcZY"
 }
+
+**/
 
 variable "subscription_id" {  
     description = "Azure subscription id"
