@@ -13,10 +13,6 @@ variable "location" {
   default = "westus2" 
 }
 
-/**
-// use these lines if you are deploying application or doing automation using API etc
-// since I will be using az commands from within Cloud CLI all these are available in the environment
-
 variable "tenant_id" {
     description = "Tenant ID"
     default = "f958e84a-92b8-439f-a62d-4f45996b6d07"
@@ -37,7 +33,6 @@ variable "subscription_id" {
     default = "df56a173-611b-429d-901a-af369d7d59b5"
 }
 
-**/
 
 variable "vm_count" {
   description = "Number of virtual machines to deploy"
