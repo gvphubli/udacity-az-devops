@@ -162,7 +162,7 @@ terraform show
 ![Terraform apply](images/terraform-apply-completed.png)
 ![Verify resources](images/terraform-az-console-verify.png)
 ![Verify LB](images/terraform-az-console-verify-lb.png)
-![Verify VMs](images/terraform-az-console-vms.png
+![Verify VMs](images/terraform-az-console-vms.png)
 ![Terraform destroy](images/terraform-destroy.png)
 ![Terraform destroy completed](images/terraform-destroy-complete.png
 ![Terraform destroy verify from console](images/terraform-destroy-complete-verify.png)
