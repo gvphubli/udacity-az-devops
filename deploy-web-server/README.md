@@ -1,4 +1,5 @@
-# Azure Infrastructure Operations Project: Deploying a scalable IaaS web server in Azure
+# Udacity Nano degree program
+# Project: Deploying Highly available and scalable IaaS web server in Azure
 
 ## Introduction
 For this project, you will write a Packer template and a Terraform template to deploy a customizable, scalable web server in Azure. The original starter files of this project live at this [repository](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/tree/master/C1%20-%20Azure%20Infrastructure%20Operations/project/starter_files).
