@@ -143,6 +143,12 @@ After that, the infrastructure and its resources should be listed here:
 terraform show
 ```
 
+![Terraform plan/solution](images/terraform-solution.png)
+![Terraform apply](images/terraform-apply-completed.png)
+![Verify resources](images/terraform-az-console-verify.png)
+![Verify LB](images/terraform-az-console-verify-lb.png)
+
+
 #### 3.5 Destroy the infrastructure
 When not using the infrastructure anymore, we should delete all unused resources:
 
@@ -158,10 +164,6 @@ We should also double-check that all affected infrastructure resources have been
 terraform show
 ```
 
-![Terraform plan/solution](images/terraform-solution.png)
-![Terraform apply](images/terraform-apply-completed.png)
-![Verify resources](images/terraform-az-console-verify.png)
-![Verify LB](images/terraform-az-console-verify-lb.png)
 ![Verify VMs](images/terraform-az-console-vms.png)
 ![Terraform destroy](images/terraform-destroy.png)
 ![Terraform destroy completed](images/terraform-destroy-complete.png
