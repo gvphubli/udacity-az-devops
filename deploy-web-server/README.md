@@ -87,7 +87,17 @@ Things we need to do here are:
 
 
 ```bash
+#
+## Before "packer" build, set these environment variables as follows
+## (replace respective values to match your environment)
+#
+export ARM_CLIENT_ID="2b862618-5e5f-4aad-bb80-a4069c86xxx"
+export ARM_CLIENT_SECRET="scy8Q~PJ59CgJFpH4ipRPDjqzD31pzttGuEKxxx"
+export ARM_TENANT_ID="f958e84a-92b8-439f-a62d-4f45996bxxx"
+export ARM_SUBSCRIPTION_ID="c9f1e8cb-24a3-405b-9046-bf2b3412xxx"
+
 packer build server.json
+
 ```
 ![Packer build start](images/packer-build.png)
 ![Packer build completed](images/packer-build-complete.png)
