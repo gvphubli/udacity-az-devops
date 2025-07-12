@@ -198,3 +198,5 @@ The output of this Terraform template is the deployment of the following Azure r
 * Managed disks for each virtual machine.
 
 The template uses variables for the Azure credentials, resource group name, prefix, tags, VM count, username, and password.
+
+References: https://github.com/Azure-Terraform
