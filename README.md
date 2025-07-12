@@ -16,7 +16,7 @@ The program is divided into three main sections, each focusing on specific aspec
 
 But the project focuses mainly on applying these lesson to deploy a web server
 
-&rarr; [Project: Deploying a Web Server in Azure](https://github.com/gvphubli/udemy-az-devops/tree/main/)
+&rarr; [Project: Deploying a Web Server in Azure](https://github.com/gvphubli/udacity-az-devops/tree/main/)
 
 
 ## Key Skills
