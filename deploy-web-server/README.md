@@ -12,6 +12,7 @@ Although we’d like to use Azure App Service, management has told us that the c
 
 To support this need and minimize future work, we will use Packer to create a server image, and Terraform to create a template for deploying a scalable cluster of servers—with a load balancer to manage the incoming traffic. We’ll also need to adhere to security practices and ensure that our infrastructure is secure.
 
+Source: Below image is from the Udacity course, but labels were added by the author of this repo.
 ![Project overview](images/project-overview.png)
 
 ## Main steps
