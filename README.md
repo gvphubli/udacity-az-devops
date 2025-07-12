@@ -19,4 +19,4 @@ But the project focuses mainly on applying these lesson to deploy a web server
 
 ## Key Skills
 
-* **Azure Infrastructure Operations**: Folloing skill were learnt and used - Infrastructure as Code (IaC), Azure user management, Azure monitor, Azure active directory, Azure security center, Network security with Azure, Virtual Machine management, Packer, Azure CLI, Terraform, DevOps business context
+* **Azure Infrastructure Operations**: Following skill were learnt and used - Infrastructure as Code (IaC), Azure user management, Azure monitor, Azure active directory, Azure security center, Network security with Azure, Virtual Machine management, Packer, Azure CLI, Terraform, DevOps business context
