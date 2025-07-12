@@ -91,18 +91,13 @@ packer build server.json
 ```
 ![Packer build start](images/packer-build.png)
 ![Packer build completed](images/packer-build-complete.png)
-![Portal view](images/packer-build-verify.png)
 
 - verify the newly created image by running:
 
 ```bash
 az image list
 ```
-
-![Upload server.json](images/packer/upload_file.png)
-![Building image](images/packer/build_image.png)
-![Finished build](images/packer/build_finished.png)
-![Images list](images/packer/image_list.png)
+![Portal view](images/packer-build-verify.png)
 
 ### 3. Terraform template
 
@@ -163,13 +158,14 @@ We should also double-check that all affected infrastructure resources have been
 terraform show
 ```
 
-![Terraform init](images/terraform/init.png)
-![Terraform plan](images/terraform/plan.png)
-![Terraform plan -out ](images/terraform/out.png)
-![Terraform apply](images/terraform/apply.png)
-![Terraform apply completed](images/terraform/apply_complete.png)
-![Terraform Azure resources](images/terraform/infrastructure_resources.png)
-![Terraform destroy](images/terraform/destroy.png)
+![Terraform plan/solution](images/terraform-solution.png)
+![Terraform apply](images/terraform-apply-completed.png)
+![Verify resources](images/terraform-az-console-verify.png)
+![Verify LB](images/terraform-az-console-verify-lb.png)
+![Verify VMs](images/terraform-az-console-vms.png
+![Terraform destroy](images/terraform-destroy.png)
+![Terraform destroy completed](images/terraform-destroy-complete.png
+![Terraform destroy verify from console](images/terraform-destroy-complete-verify.png)
 
 ## Output
 The Terraform template deploys a virtual network, network security groups, network interfaces, a public IP, a load balancer, availability sets, virtual machines, and managed disks in Azure.
