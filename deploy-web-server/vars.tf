@@ -10,7 +10,7 @@ variable "resourcegroup" {
 
 variable "location" {
   description = "The Azure Region in which all resources in this project should be created."
-  default = "westeurope" 
+  default = "eastus" 
 }
 
 variable "tenant_id" {
@@ -20,17 +20,17 @@ variable "tenant_id" {
 
 variable "client_id" {  
     description = "Client ID"
-    default = "752c4152-7514-463b-bdba-7b977e3f8fbe"
+    default = "2b862618-5e5f-4aad-bb80-a4069c86ad21"
 }
 
 variable "client_secret" {  
     description = "Client secret id"
-    default = "SdD8Q~QOdQU3np190XSMAZljfyq0~wxICoSDwcZY"
+    default = "scy8Q~PJ59CgJFpH4ipRPDjqzD31pzttGuEK7cg4"
 }
 
 variable "subscription_id" {  
     description = "Azure subscription id"
-    default = "df56a173-611b-429d-901a-af369d7d59b5"
+    default = "c9f1e8cb-24a3-405b-9046-bf2b34125d0c"
 }
 
 
