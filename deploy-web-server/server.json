@@ -17,8 +17,8 @@
       "image_offer": "UbuntuServer",
       "image_sku": "18.04-LTS",
       "managed_image_resource_group_name": "Azuredevops",
+      "build_resource_group_name": "Azuredevops",
       "managed_image_name": "PackerImage",
-      "location": "West Europe",
       "vm_size": "Standard_DS1_v2",
       "azure_tags": {
         "project": "udacity-webserver",
