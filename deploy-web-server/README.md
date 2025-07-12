@@ -85,11 +85,13 @@ Things we need to do here are:
 - assign the proper values to environment variables
 - place the right variables in *vars.tf* that are being used in *main.tf*
 
-This *server.json* file needs then to be uploaded to a storage in Azure and run via Azure CLI:
 
 ```bash
 packer build server.json
 ```
+![Packer build start](images/packer-build.png)
+![Packer build completed](images/packer-build-complete.png)
+![Portal view](images/packer-build-verify.png)
 
 - verify the newly created image by running:
 
