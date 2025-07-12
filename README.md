@@ -1,7 +1,5 @@
 # Cloud DevOps using Microsoft Azure Nanodegree Program
 
-![Azure Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/1280px-Microsoft_Azure_Logo.svg.png)
-
 Deploy, test, and monitor cloud applications on Microsoft Azure. This program equips you with the essential skills and knowledge required to excel in the field of cloud DevOps using Microsoft Azure. It has been built as a part of Udemy Azure Dev Ops Nano degree project.
 
 ## Program Structure
