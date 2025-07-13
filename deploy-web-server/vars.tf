@@ -20,19 +20,18 @@ variable "tenant_id" {
 
 variable "client_id" {  
     description = "Client ID"
-    default = "2b862618-5e5f-4aad-bb80-a4069c86ad21"
+    default = "23104103-154d-4a96-bc54-1dc16b91cf08"
 }
 
 variable "client_secret" {  
     description = "Client secret id"
-    default = "scy8Q~PJ59CgJFpH4ipRPDjqzD31pzttGuEK7cg4"
+    default = "h.n8Q~tF7snvBI4yvjw8S~qu_1OptXjeyEm6QbpC"
 }
 
 variable "subscription_id" {  
     description = "Azure subscription id"
-    default = "c9f1e8cb-24a3-405b-9046-bf2b34125d0c"
+    default = "fbf787c1-ed83-44ad-946e-6ff3b027c400"
 }
-
 
 variable "vm_count" {
   description = "Number of virtual machines to deploy"
