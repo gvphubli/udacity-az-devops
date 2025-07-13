@@ -54,7 +54,7 @@ resource "azurerm_network_security_group" "main" {
 // Allow only acces to VMs on the same subnet
 resource "azurerm_network_security_rule" "rule1" {
     name                       = "allow-internal"
-    priority                   = 100
+    priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
