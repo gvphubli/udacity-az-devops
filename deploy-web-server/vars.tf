@@ -13,6 +13,11 @@ variable "location" {
   default = "eastus" 
 }
 
+variable "subscription_id" {  
+    description = "Azure subscription id"
+    default = "fbf787c1-ed83-44ad-946e-6ff3b027c400"
+}
+
 variable "tenant_id" {
     description = "Tenant ID"
     default = "f958e84a-92b8-439f-a62d-4f45996b6d07"
@@ -26,11 +31,6 @@ variable "client_id" {
 variable "client_secret" {  
     description = "Client secret id"
     default = "h.n8Q~tF7snvBI4yvjw8S~qu_1OptXjeyEm6QbpC"
-}
-
-variable "subscription_id" {  
-    description = "Azure subscription id"
-    default = "fbf787c1-ed83-44ad-946e-6ff3b027c400"
 }
 
 variable "vm_count" {
