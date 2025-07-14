@@ -52,8 +52,8 @@ resource "azurerm_network_security_group" "main" {
 
 
 // Allow only acces to VMs on the same subnet
-resource "azurerm_network_security_rule" "rule1" {
-    name                       = "allow-internal"
+resource "azurerm_network_security_rule" "allow_internal" {
+    name                       = "allow_internal"
     priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
@@ -69,8 +69,8 @@ resource "azurerm_network_security_rule" "rule1" {
 
 // Deny all access from the internet
 // modified destination_address_prefix - 7/13/2025
-resource "azurerm_network_security_rule" "rule2" {
-    name                       = "deny-internet"
+resource "azurerm_network_security_rule" "deny_internet" {
+    name                       = "deny_internet"
     priority                   = 200
     direction                  = "Inbound"
     access                     = "Deny"
@@ -82,6 +82,42 @@ resource "azurerm_network_security_rule" "rule2" {
     resource_group_name         = data.azurerm_resource_group.main.name
     network_security_group_name = azurerm_network_security_group.main.name
 }
+
+// new rule 7/13/2025
+resource "azurerm_network_security_rule" "allow_http" {
+    name                       = "allow_http"
+    priority                   = 120
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+    resource_group_name         = data.azurerm_resource_group.main.name
+    network_security_group_name = azurerm_network_security_group.main.name
+  }
+
+resource "azurerm_lb_rule" "http" {
+    name                           = "http-rule"
+    resource_group_name            = data.azurerm_resource_group.main.name
+    loadbalancer_id                = azurerm_lb.main.id
+    protocol                       = "Tcp"
+    frontend_port                  = 80
+    backend_port                   = 80
+    frontend_ip_configuration_name = "${var.prefix}-load-balancer-frontend"
+    backend_address_pool_id        = azurerm_lb_backend_address_pool.main.id
+    probe_id                       = azurerm_lb_probe.http.id
+  }
+
+resource "azurerm_lb_probe" "http" {
+    name                = "http-probe"
+    resource_group_name = data.azurerm_resource_group.main.name
+    loadbalancer_id     = azurerm_lb.main.id
+    protocol            = "Http"
+    port                = 80
+    request_path        = "/index.html"
+  }
 
 // Network interface group
 resource "azurerm_network_interface" "main" {
