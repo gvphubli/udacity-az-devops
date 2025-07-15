@@ -41,7 +41,12 @@ The project will consist of the following main steps:
 ```bash
 az login
 ```
- - delete ```terraform.tfstate``` , ```solution.plan``` , ```.terraform.lock.hcl``` artifacts from previous builds
+
+#### Delete ```terraform.tfstate``` , ```solution.plan``` , ```.terraform.lock.hcl``` artifacts from previous builds
+
+```bash
+rm terraform.tfstate terraform.tfstate.backup solution.plan
+```
 
 ### 1. Deploy a Policy
 
