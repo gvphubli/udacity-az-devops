@@ -100,19 +100,17 @@ resource "azurerm_network_security_rule" "allow_http" {
 
 resource "azurerm_lb_rule" "http" {
     name                           = "http-rule"
-    resource_group_name            = data.azurerm_resource_group.main.name
     loadbalancer_id                = azurerm_lb.main.id
     protocol                       = "Tcp"
     frontend_port                  = 80
     backend_port                   = 80
     frontend_ip_configuration_name = "${var.prefix}-load-balancer-frontend"
-    backend_address_pool_id        = azurerm_lb_backend_address_pool.main.id
+    backend_address_pool_ids        = [azurerm_lb_backend_address_pool.main.id]
     probe_id                       = azurerm_lb_probe.http.id
   }
 
 resource "azurerm_lb_probe" "http" {
     name                = "http-probe"
-    resource_group_name = data.azurerm_resource_group.main.name
     loadbalancer_id     = azurerm_lb.main.id
     protocol            = "Http"
     port                = 80
