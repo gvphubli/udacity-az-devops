@@ -30,6 +30,9 @@ resource "azurerm_subnet" "internal" {
 
 
 // Network security group
+// "allow_ssh" and "allow_internal" are same
+
+/*
 // rules updated 7/13/2025
 resource "azurerm_network_security_group" "main" {
   name                = "${var.prefix}-nsg"
@@ -50,6 +53,7 @@ resource "azurerm_network_security_group" "main" {
   tags = var.tags
 }
 
+*/
 
 // Allow only acces to VMs on the same subnet
 resource "azurerm_network_security_rule" "allow_internal" {
@@ -63,22 +67,6 @@ resource "azurerm_network_security_rule" "allow_internal" {
     source_address_prefix      = "10.0.2.0/24"
     destination_address_prefix = "*"
     description                = "description-ssh"
-    resource_group_name         = data.azurerm_resource_group.main.name
-    network_security_group_name = azurerm_network_security_group.main.name
-}
-
-// Deny all access from the internet
-// modified destination_address_prefix - 7/13/2025
-resource "azurerm_network_security_rule" "deny_internet" {
-    name                       = "deny_internet"
-    priority                   = 200
-    direction                  = "Inbound"
-    access                     = "Deny"
-    protocol                   = "*"
-    source_port_range          = "*"
-    destination_port_range     = "*"
-    source_address_prefix      = "*"
-    destination_address_prefix = "10.0.2.0/24"  
     resource_group_name         = data.azurerm_resource_group.main.name
     network_security_group_name = azurerm_network_security_group.main.name
 }
@@ -97,6 +85,24 @@ resource "azurerm_network_security_rule" "allow_http" {
     resource_group_name         = data.azurerm_resource_group.main.name
     network_security_group_name = azurerm_network_security_group.main.name
   }
+
+
+// Deny all access from the internet
+// modified destination_address_prefix - 7/13/2025
+resource "azurerm_network_security_rule" "deny_internet" {
+    name                       = "deny_internet"
+    priority                   = 200
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "*"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "10.0.2.0/24"  
+    resource_group_name         = data.azurerm_resource_group.main.name
+    network_security_group_name = azurerm_network_security_group.main.name
+}
+
 
 resource "azurerm_lb_rule" "http" {
     name                           = "http-rule"
