@@ -31,20 +31,21 @@
 "provisioners": [
   {
     "type": "shell",
-    "inline_shebang": "/bin/sh -x",
     "inline": [
       "sudo mkdir -p /opt/web",
-      "echo '<h1>Hello, World!</h1>' | sudo tee /opt/web/index.html",
-      "sudo nohup busybox httpd -f -p 80 -h /opt/web &",
-      "echo '[Unit]' | sudo tee /etc/systemd/system/busybox-webserver.service",
-      "echo 'Description=BusyBox Web Server' | sudo tee -a /etc/systemd/system/busybox-webserver.service",
-      "echo '[Service]' | sudo tee -a /etc/systemd/system/busybox-webserver.service",
-      "echo 'ExecStart=/bin/busybox httpd -f -p 80 -h /opt/web' | sudo tee -a /etc/systemd/system/busybox-webserver.service",
-      "echo '[Install]' | sudo tee -a /etc/systemd/system/busybox-webserver.service",
-      "echo 'WantedBy=multi-user.target' | sudo tee -a /etc/systemd/system/busybox-webserver.service",
+      "echo 'Hello, World!' | sudo tee /opt/web/index.html",
+      "cat <<EOF | sudo tee /etc/systemd/system/busybox-webserver.service",
+      "[Unit]",
+      "Description=BusyBox Web Server",
+      "[Service]",
+      "ExecStart=/bin/busybox httpd -f -p 80 -h /opt/web",
+      "[Install]",
+      "WantedBy=multi-user.target",
+      "EOF",
       "sudo systemctl enable busybox-webserver.service"
     ]
   }
 ]
+
 
 }
