@@ -30,35 +30,19 @@ resource "azurerm_subnet" "internal" {
 
 
 // Network security group
-// "allow_ssh" and "allow_internal" are same
-
-/*
 // rules updated 7/13/2025
 resource "azurerm_network_security_group" "main" {
   name                = "${var.prefix}-nsg"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
-  security_rule {
-    name                       = "allow_ssh"
-    priority                   = 100
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "22"
-    source_address_prefix      = "10.0.2.0/24"  # match the subnet here!
-    destination_address_prefix = "*"
-  }
-
   tags = var.tags
 }
 
-*/
 
 // Allow only acces to VMs on the same subnet
 resource "azurerm_network_security_rule" "allow_internal" {
     name                       = "allow_internal"
-    priority                   = 110
+    priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -71,7 +55,6 @@ resource "azurerm_network_security_rule" "allow_internal" {
     network_security_group_name = azurerm_network_security_group.main.name
 }
 
-// new rule 7/13/2025
 resource "azurerm_network_security_rule" "allow_http" {
     name                       = "allow_http"
     priority                   = 120
@@ -85,7 +68,6 @@ resource "azurerm_network_security_rule" "allow_http" {
     resource_group_name         = data.azurerm_resource_group.main.name
     network_security_group_name = azurerm_network_security_group.main.name
   }
-
 
 // Deny all access from the internet
 // modified destination_address_prefix - 7/13/2025
@@ -102,6 +84,7 @@ resource "azurerm_network_security_rule" "deny_internet" {
     resource_group_name         = data.azurerm_resource_group.main.name
     network_security_group_name = azurerm_network_security_group.main.name
 }
+
 
 
 resource "azurerm_lb_rule" "http" {
