@@ -35,7 +35,7 @@
     "inline": [
       "sudo mkdir -p /opt/web",
       "echo '<h1>Hello, World!</h1>' | sudo tee /opt/web/index.html",
-      "sudo busybox httpd -f -p 80 -h /opt/web &",
+      "sudo nohup busybox httpd -f -p 80 -h /opt/web &",
       "echo '[Unit]' | sudo tee /etc/systemd/system/busybox-webserver.service",
       "echo 'Description=BusyBox Web Server' | sudo tee -a /etc/systemd/system/busybox-webserver.service",
       "echo '[Service]' | sudo tee -a /etc/systemd/system/busybox-webserver.service",
