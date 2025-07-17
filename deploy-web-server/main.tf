@@ -138,7 +138,7 @@ resource "azurerm_lb_rule" "http" {
   }
 
 resource "azurerm_lb_probe" "tcp" {
-    name                = "http-probe"
+    name                = "tcp-probe"
     loadbalancer_id     = azurerm_lb.main.id
     protocol            = "Tcp"
     port                = 80
