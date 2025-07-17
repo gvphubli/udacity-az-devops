@@ -14,7 +14,7 @@ data "azurerm_resource_group" "main" {
 // Virtual network
 resource "azurerm_virtual_network" "main" {
     name                    = "${var.prefix}-network"
-    address_space           = ["10.0.0.0/22"]
+    address_space           = ["10.0.0.0/16"]
     location                = data.azurerm_resource_group.main.location
     resource_group_name     = data.azurerm_resource_group.main.name
     tags                    = var.tags
@@ -25,7 +25,7 @@ resource "azurerm_subnet" "internal" {
     name                    = "internal"
     resource_group_name     = data.azurerm_resource_group.main.name
     virtual_network_name    = azurerm_virtual_network.main.name
-    address_prefixes        = ["10.0.2.0/24"]
+    address_prefixes        = ["10.0.1.0/24"]
 }
 
 
@@ -87,25 +87,6 @@ resource "azurerm_network_security_rule" "deny_internet" {
 
 
 
-resource "azurerm_lb_rule" "http" {
-    name                           = "http-rule"
-    loadbalancer_id                = azurerm_lb.main.id
-    protocol                       = "Tcp"
-    frontend_port                  = 80
-    backend_port                   = 80
-    frontend_ip_configuration_name = "${var.prefix}-load-balancer-frontend"
-    backend_address_pool_ids        = [azurerm_lb_backend_address_pool.main.id]
-    probe_id                       = azurerm_lb_probe.http.id
-  }
-
-resource "azurerm_lb_probe" "http" {
-    name                = "http-probe"
-    loadbalancer_id     = azurerm_lb.main.id
-    protocol            = "Http"
-    port                = 80
-    request_path        = "/index.html"
-  }
-
 // Network interface group
 resource "azurerm_network_interface" "main" {
     name                = "${var.prefix}-nic${count.index}"
@@ -135,6 +116,7 @@ resource "azurerm_lb" "main" {
     name                = "${var.prefix}-lb"
     location            = data.azurerm_resource_group.main.location
     resource_group_name = data.azurerm_resource_group.main.name
+	sku                 = "Standard"
 
     frontend_ip_configuration {
         name                 = "${var.prefix}-load-balancer-frontend"
@@ -144,11 +126,30 @@ resource "azurerm_lb" "main" {
     tags                     = var.tags
 }
 
+resource "azurerm_lb_rule" "http" {
+    name                           = "http-rule"
+    loadbalancer_id                = azurerm_lb.main.id
+    protocol                       = "Tcp"
+    frontend_port                  = 80
+    backend_port                   = 80
+    frontend_ip_configuration_name = "${var.prefix}-load-balancer-frontend"
+    backend_address_pool_ids        = [azurerm_lb_backend_address_pool.main.id]
+    probe_id                       = azurerm_lb_probe.tcp.id
+  }
+
+resource "azurerm_lb_probe" "tcp" {
+    name                = "http-probe"
+    loadbalancer_id     = azurerm_lb.main.id
+    protocol            = "Tcp"
+    port                = 80
+  }
+
 // Load balancer backend address pool
 resource "azurerm_lb_backend_address_pool" "main" {
     loadbalancer_id = azurerm_lb.main.id
     name            = "backend-adress-pool"
 }
+
 
 // Load balancer backend network address pool association
 resource "azurerm_network_interface_backend_address_pool_association" "main" {
