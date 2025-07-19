@@ -1,0 +1,9 @@
+#cloud-config
+write_files:
+  - path: /opt/web/index.html
+    permissions: '0644'
+    content: |
+      <h1>Hello World!</h1> from host: $(hostname)! # Shell command substitution here (executed by cloud-init)
+
+runcmd:
+  - systemctl restart busybox-webserver.service # Restart to pick up new index.html
