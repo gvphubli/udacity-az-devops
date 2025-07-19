@@ -1,9 +1,15 @@
 #cloud-config
+# This section ensures the directory exists, if it's not already created by Packer
 write_files:
-  - path: /opt/web/index.html
+  - path: - /opt/web/index.html # Create a dummy file or ensure directory, if needed
     permissions: '0644'
     content: |
-      <h1>Hello World!</h1> from host: $(hostname)! # Shell command substitution here (executed by cloud-init)
+      This is a placeholder.
 
 runcmd:
-  - systemctl restart busybox-webserver.service # Restart to pick up new index.html
+  # Get the actual hostname of the deployed VM
+  - VM_HOSTNAME=$(hostname)
+  # Write the dynamic content to index.html
+  - echo "<h1>Hello World</h1> - from VM: $VM_HOSTNAME!</h1>" | sudo tee /opt/web/index.html
+  # Restart BusyBox to ensure it serves the new index.html
+  - sudo systemctl restart busybox-webserver.service
