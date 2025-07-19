@@ -38,11 +38,26 @@ resource "azurerm_network_security_group" "main" {
   tags = var.tags
 }
 
+// allow internet http on port #80
+resource "azurerm_network_security_rule" "allow_http" {
+    name                       = "allow_http"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+    resource_group_name         = data.azurerm_resource_group.main.name
+    network_security_group_name = azurerm_network_security_group.main.name
+  }
+
 
 // Allow only acces to VMs on the same subnet
 resource "azurerm_network_security_rule" "allow_internal" {
     name                       = "allow_internal"
-    priority                   = 100
+    priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -55,19 +70,6 @@ resource "azurerm_network_security_rule" "allow_internal" {
     network_security_group_name = azurerm_network_security_group.main.name
 }
 
-resource "azurerm_network_security_rule" "allow_http" {
-    name                       = "allow_http"
-    priority                   = 120
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "Tcp"
-    source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-    resource_group_name         = data.azurerm_resource_group.main.name
-    network_security_group_name = azurerm_network_security_group.main.name
-  }
 
 // Deny all access from the internet
 // modified destination_address_prefix - 7/13/2025
@@ -98,7 +100,16 @@ resource "azurerm_network_interface" "main" {
     subnet_id                     = azurerm_subnet.internal.id
     private_ip_address_allocation = "Dynamic"
     }  
+		
     tags                          = var.tags
+}
+
+// nic-level nsg association
+resource "azurerm_network_interface_security_group_association" "main" {
+    count = var.vm_count # Create one association for each NIC
+
+    network_interface_id      = element(azurerm_network_interface.main.*.id, count.index)
+    network_security_group_id = azurerm_network_security_group.main.id
 }
 
 // Public IP
@@ -205,4 +216,4 @@ resource "azurerm_managed_disk" "main" {
     create_option        = "Empty"
     disk_size_gb         = "1"
     tags                 = var.tags
-}
+	}
