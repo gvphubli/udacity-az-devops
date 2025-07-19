@@ -13,24 +13,25 @@ variable "location" {
   default = "eastus" 
 }
 
+
 variable "subscription_id" {
     description = "Azure subscription id"
-    default = "8b8fdec5-790a-4029-a7e5-a8b5cb5f4e50"
+    default = "c9f1e8cb-24a3-405b-9046-bf2b34125d0c"
 }
 
 variable "tenant_id" {
     description = "Tenant ID"
-    default = "93433ec6-28a5-4756-b39c-baa0d6174e40"
+    default = "f958e84a-92b8-439f-a62d-4f45996b6d07"
 }
 
 variable "client_id" {
     description = "Client ID"
-    default = "e0a8e7fe-3905-4016-a5c7-dc101a4139f6"
+    default = "7e3ad72a-4263-4926-bcfe-c9321be011ec"
 }
 
 variable "client_secret" {
     description = "Client secret id"
-    default = "lxO8Q~uHjkprQZiOhvGKSlmGf14smUZuwZbuxcYX"
+    default = "4X88Q~9gBeFpK94yp0HxHShwHYNSSBD9W1q-1aB7"
 }
 
 variable "vm_count" {
