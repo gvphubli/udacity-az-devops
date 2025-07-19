@@ -33,7 +33,7 @@
     "type": "shell",
     "inline": [
       "sudo mkdir -p /opt/web",
-      "echo '<h1>Hello, World!</h1>' | sudo tee /opt/web/index.html",
+      "echo '<h1>Hello, World!</h1> - hostname:'`hostname` | sudo tee /opt/web/index.html",
       "cat <<EOF | sudo tee /etc/systemd/system/busybox-webserver.service",
       "[Unit]",
       "Description=BusyBox Web Server",
