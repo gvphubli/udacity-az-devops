@@ -204,6 +204,10 @@ resource "azurerm_linux_virtual_machine" "main" {
     tags                     = var.tags
 
     source_image_id = data.azurerm_image.main.id
+
+    # --- Cloud-init ---
+    custom_data = base64encode(file("${path.module}/cloud-init.yaml"))
+
 }
 
 // Managed disks creation
