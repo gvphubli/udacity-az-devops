@@ -98,10 +98,12 @@ Things we need to do here are:
 ## Before "packer" build, set these environment variables as follows
 ## (replace respective values to match your environment)
 #
-export ARM_CLIENT_ID="2b862618-5e5f-4aad-bb80-a4069c86xxx"
-export ARM_CLIENT_SECRET="scy8Q~PJ59CgJFpH4ipRPDjqzD31pzttGuEKxxx"
-export ARM_TENANT_ID="f958e84a-92b8-439f-a62d-4f45996bxxx"
-export ARM_SUBSCRIPTION_ID="c9f1e8cb-24a3-405b-9046-bf2b3412xxx"
+```bash
+export ARM_CLIENT_ID="7e3ad72a-4263-4926-bcfe-c9321be011ec"
+export ARM_CLIENT_SECRET="4X88Q~9gBeFpK94yp0HxHShwHYNSSBD9W1q-1aB7"
+export ARM_TENANT_ID="f958e84a-92b8-439f-a62d-4f45996b6d07"
+export ARM_SUBSCRIPTION_ID="c9f1e8cb-24a3-405b-9046-bf2b34125d0c"
+```
 
 
 ```bash
