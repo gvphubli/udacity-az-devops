@@ -1,10 +1,5 @@
 #cloud-config
-write_files:
-  - path: /opt/web/index.html
-    permissions: '0644'
-    content: |
-      This is a placeholder.
-
 runcmd:
   - echo "<h1>Hello World</h1> - from VM: $(hostname)!</h1>" | sudo tee /opt/web/index.html
   - sudo systemctl restart busybox-webserver.service
+  
