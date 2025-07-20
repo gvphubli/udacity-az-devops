@@ -1,5 +1,5 @@
 #cloud-config
 runcmd:
-  - echo "<h1>Hello World</h1> - from VM: $(hostname)!</h1>" | sudo tee /opt/web/index.html
+  - echo "<h1>Hello World</h1> - from VM: $(hostname)" | sudo tee /opt/web/index.html
   - sudo systemctl restart busybox-webserver.service
   
